@@ -1,4 +1,4 @@
-const koronaDetailModel = require('../model/koronaDetailsMoDel')
+const koronaDetailModel = require('../model/koronaDetailsModel')
 
 
 
@@ -35,19 +35,24 @@ exports.createKoronaDetail = function(obj)
     return new Promise((resolve, reject) =>
     {
         let koronaDetail = new koronaDetailModel({
-
-          patientId: obj.patientId,
-          firstVaccindate: obj.firstVaccindate,
-          firstVaccinmanufacturer: obj.firstVaccinmanufacturer  ,
-          secondVaccindate: obj.secondVaccindate,
-          secondVaccinmanufacturer: obj.secondVaccinmanufacturer,
-          thirdVaccindate: obj.thirdVaccindate,
-          thirdVaccinmanufacturer: obj.thirdVaccinmanufacturer,
-          fourthVaccindate: obj.fourthVaccindate,
-          fourthVaccinmanufacturer: obj.fourthVaccinmanufacturer,
+          patientId:obj.patientId,
+          firstVaccin: {
+            date: obj.firstVaccin.date,
+            manufacturer: obj.firstVaccin.manufacturer
+          },
+          secondVaccin: {
+            date: obj.secondVaccin.date,
+            manufacturer: obj.secondVaccin.manufacturer
+          },
+          thirdVaccin: {
+            date: obj.thirdVaccin.date,
+            manufacturer: obj.thirdVaccin.manufacturer
+          },fourthVaccin: {
+            date: obj.fourthVaccin.date,
+            manufacturer: obj.fourthVaccin.manufacturer
+          },
           positiveDate: obj.positiveDate,
           outDate: obj.outDate
-}
         );
   koronaDetail.save()
   .then(function(result) {
@@ -63,17 +68,4 @@ exports.createKoronaDetail = function(obj)
 
         })
     }
-
-
-// exports.getAllkoronaDetail = async function() {
-//   return koronaDetailModel.find().exec()
-//   .then((data) => {
-//     console.log("covid data")
-//     console.log(data)
-//     return data;
-//   })
-//   .catch((err) => {
-//     throw err;
-//   });
-// }
 

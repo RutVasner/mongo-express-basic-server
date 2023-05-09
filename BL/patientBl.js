@@ -23,7 +23,6 @@ exports.createPatient = function(obj)
         
 patient.save()
   .then(function(result) {
-    //console.log(result)
     resolve("created!");
   })
   .catch(function(err) {
@@ -53,6 +52,20 @@ exports.getpatient = function(id)
     {
         patientModel.findById(id).exec().then(function(data) // העברת הפרמטר id כפרמטר לפונקציית findById()
         {
+            resolve(data)
+        })
+        .catch(function(err){
+            reject(err)
+        });
+    })
+}
+exports.getpatientbyId = function(patientId)
+{
+    return new Promise((resolve, reject) =>
+    {
+        patientModel.findBypatientId(patientId).exec().then(function(data) // העברת הפרמטר id כפרמטר לפונקציית findById()
+        {
+          console.log("data - bl")
             resolve(data)
         })
         .catch(function(err){

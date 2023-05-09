@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const addressSchema = new mongoose.Schema({
-    street: String,
-    city: String,
-    num: Number,
-    country: String,
-    postalCode: Number,
-  });
+            street: String,
+            city: String,
+            num: Number,
+            country: String,
+            postalCode: Number,
+            });
 let patientSchema = new mongoose.Schema({
     firstName: String,
     lastName : String,

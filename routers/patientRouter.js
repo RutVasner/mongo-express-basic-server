@@ -53,5 +53,15 @@ router.route('/:id')
                 return resp.json(data)
             })
     })
-
+router.route('/:patientId')
+    .get(function(req, resp)
+    {
+        let patientId = req.params.patientId;
+console.log("patientId - router")
+console.log(patientId)
+        patientBL.getpatient(patientId).then(data =>
+            {
+                return resp.json(data)
+            })
+    })
     
