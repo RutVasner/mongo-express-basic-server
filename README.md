@@ -19,7 +19,7 @@ The project allows users to perform basic operations such as creating and readin
   includes: express,cors,mongoose.
  * for runing the program you can use the forward json:
  * 
- -> patients table:
+ +++-> patients table:
  
   {
   "patientId": "302361910",
