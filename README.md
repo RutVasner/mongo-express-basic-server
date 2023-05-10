@@ -15,11 +15,12 @@ The project allows users to perform basic operations such as creating and readin
 ### Code Source
 
 * download the project code via "git clone https://github.com/RutVasner/server.git"
-* install npm packages by "npm install" command 
+* install npm packages by the command:
+$ "npm install"
   includes: express,cors,mongoose.
- * for runing the program you can use the forward json:
- * 
- +++-> patients table:
+ * for runing the program you can use the forward json file:
+
+######patients table:
  
   {
   "patientId": "302361910",
@@ -48,37 +49,35 @@ The project allows users to perform basic operations such as creating and readin
   "outDate": "05/06/2021"
 }
 
-->covidDetails
+######covidDetails
 
 {
 "patientId": 123456789,
 
-"firstVaccin":{ "date":"07/09/2021",
+"firstVaccin":{ "date": "2021-07-08T21:00:00.000Z",
     "manufacturer": "Pfizer"
     },
     
 "secondVaccin":{ 
-      "date":"07/09/2021",
+      "date":"2021-07-08T21:00:00.000Z",
     "manufacturer": "Pfizer"
     },
     
 "thirdVaccin": {
-"date":"07/09/2021",
+"date":"2021-07-08T21:00:00.000Z",
 "manufacturer": "pfizer"}
   ,
   
   "fourthVaccin": {
-    "date": "07/09/2021",
+    "date": "2021-07-08T21:00:00.000Z",
     "manufacturer":"Pfizer"
   },
   
-  "positiveDate":  "07/09/2021",
+  "positiveDate":  "2021-07-08T21:00:00.000Z",
   
-  "outDate":  "07/09/2021"
+  "outDate":  "2021-07-08T21:00:00.000Z"
 }
 
   
-run the project by "node index.js" command
-
-NOTE:
-this project was built for a curtain purpose and not to be copy.
+run the project by the command
+$ node index.js
