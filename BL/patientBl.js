@@ -18,7 +18,6 @@ exports.createPatient = function(obj)
         !obj.address.postalCode
       ) {
         reject(new Error("Missing field(s) in patient data"));
-        return resp.status(400).json({ error: "חסר שדה/ות בנתוני מבוטח" });
       }
         let patient = new patientModel({
             firstName: obj.firstName,
