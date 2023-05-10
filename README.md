@@ -20,7 +20,7 @@ $ "npm install"
   includes: express,cors,mongoose.
  * for runing the program you can use the forward json file:
 
-###### patients table:
+##### patients table:
  
   {
   "patientId": "302361910",
@@ -49,7 +49,7 @@ $ "npm install"
   "outDate": "05/06/2021"
 }
 
-###### covidDetails
+##### covidDetails
 
 {
 "patientId": 123456789,
@@ -80,4 +80,5 @@ $ "npm install"
 
   
 run the project by the command
+
 $ node index.js
