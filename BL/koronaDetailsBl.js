@@ -32,8 +32,13 @@ exports.getkoronaDetail = function(id)
 
 exports.createKoronaDetail = function(obj)
 {
+  
     return new Promise((resolve, reject) =>
     {
+      if( !obj.patientId || !obj.positiveDate || !obj.outDate)//בדיקה האם חסרים נתונים חשובים בקלט
+        {
+        reject(new Error("Missing field(s) in patient data"));    
+        }
         let koronaDetail = new koronaDetailModel({
           patientId:obj.patientId,
           firstVaccin: {
@@ -53,7 +58,7 @@ exports.createKoronaDetail = function(obj)
           },
           positiveDate: obj.positiveDate,
           outDate: obj.outDate
-        );
+    });
   koronaDetail.save()
   .then(function(result) {
     console.log("koronaDetail")
@@ -63,7 +68,7 @@ exports.createKoronaDetail = function(obj)
     resolve("created!");
   })
   .catch(function(err) {
-    reject(new MissingkoronaDetailError("Could not create koronadetails: " + err));
+    reject(new Error(err ,"Could not create koronadetails "));
   });
 
         })

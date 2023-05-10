@@ -1,8 +1,31 @@
 const express = require('express')
 const koronaDetailBl = require('../BL/koronaDetailsBl')
 const router = express.Router();
-const KoronaDetailM = require('../model/koronaDetailsModel') 
+const KoronaDetailM = require('../model/koronaDetailsModel')
 module.exports = router;
+
+
+router.route('/')
+    .get(function(req, resp)
+    {
+       
+        koronaDetailBl.getAllkoronaDetail().then(data =>
+            {
+                return resp.json(data)
+            })
+    });
+
+    router.route('/:id')
+    .get(function(req, resp)
+    {
+        let id = req.params.id;
+
+        koronaDetailBl.getkoronaDetail(id).then(data =>
+            {
+                return resp.json(data)
+            })
+    })
+
 
 router.route('/')
     .post(function(req, resp)
@@ -40,8 +63,8 @@ router.route('/')
         .catch(error => {
             console.error(error);
             return resp.status(500).json({ error: 'שגיאה בבדיקת התעודת זהות במאגר החולים' });
-        });
-    });
+        })
+    })
 
 
     

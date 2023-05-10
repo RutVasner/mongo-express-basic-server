@@ -20,8 +20,8 @@ app.use(cors({ credentials: true }))
 require('./config/dataBase');
 
 app.use('/api/patients',patientRouter);
-
-app.use('/api/covidDetails',koronaDetailRouter);
+console.log("covid")
+app.use('/api/koronadetails',koronaDetailRouter);
 
 app.listen('8000');
 

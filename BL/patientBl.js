@@ -4,7 +4,22 @@ exports.createPatient = function(obj)
 {
     return new Promise((resolve, reject) =>
     {
-     
+      if (
+        !obj.firstName ||
+        !obj.lastName ||
+        !obj.idNumber ||
+        !obj.birthDate ||
+        !obj.phone ||
+        !obj.cellPhone||
+        !obj.address.country  ||
+        !obj.address.city  ||
+        !obj.address.street  ||
+        !obj.address.num  ||
+        !obj.address.postalCode
+      ) {
+        reject(new Error("Missing field(s) in patient data"));
+        return resp.status(400).json({ error: "חסר שדה/ות בנתוני מבוטח" });
+      }
         let patient = new patientModel({
             firstName: obj.firstName,
             lastName : obj.lastName,

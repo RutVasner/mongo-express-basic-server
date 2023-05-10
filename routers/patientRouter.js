@@ -1,24 +1,39 @@
 const express = require('express')
 const patientBL = require('../BL/patientBl')
 const router = express.Router();
+const PatientM = require('../model/patientModel')
+
 
 router.route('/')
     .post(function(req, resp)
     {
        
         let obj = req.body;
-        if (
-            !obj.firstName ||!obj.lastName || !obj.idNumber || !obj.birthDate ||  !obj.phone || !obj.cellPhone
-          ) {
-            reject(new Error("Missing field(s) in patient data"));
-            return;
-          }
           //הוספת בדיקת תקינות של סוג פלט כמו טקסט, טלפון - מספרים, נייד מתחיל ב05 וכולל 10 ספרות
-        patientBL.createPatient(obj).then(data =>
-            {
-                // console.log(resp.json(data))
-                return resp.json(data)
-            })
+        const idNumber = obj.idNumber
+          PatientM.countDocuments({ idNumber: idNumber })
+          .then(count => {
+            if (count > 0) {
+              // אם התעודת זהות כבר קיימת, יש להחזיר שגיאה
+              return resp.status(400).json({ error: 'תעודת זהות כבר קיימת במאגר החולים' });
+            } else {
+              // אם התעודת זהות אינה קיימת, ניתן ליצור רשומה חדשה במאגר החולים
+              patientBL.createPatient(obj).then(data =>
+                {
+                    // console.log(resp.json(data))
+                  return resp.status(200).json( "success status 200");
+                })
+                .catch(error => {
+                  console.error(error);
+                  return resp.status(500).json({ error: 'שגיאה ביצירת רשומה חדשה במאגר החולים' });
+                });
+            }
+          })
+          .catch(error => {
+            console.error(error);
+            return resp.status(500).json({ error: 'שגיאה בבדיקת התעודת זהות במאגר החולים' });
+          });
+          
     })
 
     module.exports = router;
@@ -31,18 +46,8 @@ router.route('/')
             {
                 return resp.json(data)
             })
-    })
+    });
 
-
-    // router.route('/:id')
-    // .get(function(req, resp)
-    // {
-    //     console.log("roter id success")
-    //     patientBL.getpatient(id).then(data =>
-    //         {
-    //             return resp.json(data)
-    //         })
-    // })
 router.route('/:id')
     .get(function(req, resp)
     {
@@ -53,15 +58,5 @@ router.route('/:id')
                 return resp.json(data)
             })
     })
-router.route('/:patientId')
-    .get(function(req, resp)
-    {
-        let patientId = req.params.patientId;
-console.log("patientId - router")
-console.log(patientId)
-        patientBL.getpatient(patientId).then(data =>
-            {
-                return resp.json(data)
-            })
-    })
+
     

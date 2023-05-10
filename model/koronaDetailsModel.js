@@ -4,18 +4,18 @@ let koronaDetailSchema = new mongoose.Schema({
   patientId:{type: Number,required:true},
   firstVaccindate: {
     date: Date,
-    manufacturer: Date
+    manufacturer: String
   },
   secondVaccin: {
     date: Date,
-    manufacturer: Date
+    manufacturer: String
   },
   thirdVaccin: {
     date: Date,
-    manufacturer: Date
+    manufacturer: String
   },fourthVaccin: {
     date: Date,
-    manufacturer: Date
+    manufacturer: String
   },
   positiveDate: Date,
   outDate: Date
