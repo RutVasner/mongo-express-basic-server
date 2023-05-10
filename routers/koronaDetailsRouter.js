@@ -42,7 +42,10 @@ router.route('/')
         let idNumber = obj.patientId;
         console.log (idNumber);
         console.log (obj);
-
+        if( !obj.patientId || !obj.positiveDate || !obj.outDate)//בדיקה האם חסרים נתונים חשובים בקלט
+        {
+        return    resp.status(500).json({ error: 'חסרים נתונים' });
+        }
         if (idNumber.length > 9) {
             return resp.status(400).json({ error: 'תעודת זהות ארוכה מידי' });
         }

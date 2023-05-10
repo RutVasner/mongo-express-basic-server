@@ -34,10 +34,7 @@ exports.createKoronaDetail = function(obj)
   
     return new Promise((resolve, reject) =>
     {
-      if( !obj.patientId || !obj.positiveDate || !obj.outDate)//בדיקה האם חסרים נתונים חשובים בקלט
-        {
-        reject(new Error("Missing field(s) in patient data"));    
-        }
+      
         let koronaDetail = new koronaDetailModel({
           patientId:obj.patientId,
           firstVaccin: {
