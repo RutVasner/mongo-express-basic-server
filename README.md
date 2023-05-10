@@ -1,4 +1,4 @@
-# server
+# mongo-express-basic-server 
 
 This project is a Node.js application that uses the MongoDB database.
 The project allows users to perform basic operations such as creating and reading information from the database.
@@ -49,6 +49,7 @@ $ "npm install"
   "outDate": "05/06/2021"
 }
 
+
 ##### covidDetails
 
 {
@@ -79,6 +80,5 @@ $ "npm install"
 }
 
   
-run the project by the command
-
-$ node index.js
+  
+run the project by the command --- $ node index.js
