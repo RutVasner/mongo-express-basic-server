@@ -15,7 +15,7 @@ Usage:(If it is not yet installed on the computer)
 
 ### Code Source
 
-* download the project code via "git clone....."
+* download the project code via "git clone https://github.com/RutVasner/server.git"
 * install npm packages by "npm install" command 
   includes: express,cors,mongoose.
   
