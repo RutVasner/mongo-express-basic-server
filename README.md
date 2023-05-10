@@ -18,6 +18,7 @@ The project allows users to perform basic operations such as creating and readin
 * install npm packages by "npm install" command 
   includes: express,cors,mongoose.
  * for runing the program you can use the forward json:
+ * 
  -> patients table:
  
   {
@@ -48,6 +49,33 @@ The project allows users to perform basic operations such as creating and readin
 }
 
 ->covidDetails
+
+{
+"patientId": 123456789,
+
+"firstVaccin":{ "date":"07/09/2021",
+    "manufacturer": "Pfizer"
+    },
+    
+"secondVaccin":{ 
+      "date":"07/09/2021",
+    "manufacturer": "Pfizer"
+    },
+    
+"thirdVaccin": {
+"date":"07/09/2021",
+"manufacturer": "pfizer"}
+  ,
+  
+  "fourthVaccin": {
+    "date": "07/09/2021",
+    "manufacturer":"Pfizer"
+  },
+  
+  "positiveDate":  "07/09/2021",
+  
+  "outDate":  "07/09/2021"
+}
 
   
 run the project by "node index.js" command
