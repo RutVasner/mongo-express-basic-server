@@ -47,7 +47,17 @@ patient.save()
         })
     }
 
-
+exports.getAllpatients = async function() {
+    try {
+    
+    const data = await patientModel.find().exec();
+    console.log("patient data")
+    console.log(data)
+    return data;
+  } catch (err) {
+    throw err;
+  }
+  }
 exports.getAllpatients = async function() {
     try {
     

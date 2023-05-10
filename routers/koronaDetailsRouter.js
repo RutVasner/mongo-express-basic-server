@@ -3,17 +3,25 @@ const koronaDetailBl = require('../BL/koronaDetailsBl')
 const router = express.Router();
 const KoronaDetailM = require('../model/koronaDetailsModel')
 module.exports = router;
+const MongoClient = require('mongodb').MongoClient;
+const uri = 'mongodb://localhost:8000'; // MongoDB connection URI
+const dbName = 'HadasimProject'; // Your database name
 
 
 router.route('/')
     .get(function(req, resp)
     {
-       
+        
         koronaDetailBl.getAllkoronaDetail().then(data =>
             {
+                 console.log("documents")
+                 console.log(documents)
                 return resp.json(data)
             })
-    });
+});
+    
+
+
 
     router.route('/:id')
     .get(function(req, resp)
@@ -60,11 +68,32 @@ router.route('/')
                 });
             }
         })
-        .catch(error => {
-            console.error(error);
-            return resp.status(500).json({ error: 'שגיאה בבדיקת התעודת זהות במאגר החולים' });
-        })
+        
     })
 
-
-    
+    //נסיון לביצוע שאלת אתגר 3
+    // console.log("dbName")
+        // console.log(dbName)
+        // MongoClient.connect(uri, function(err, client) {
+        //     if (err) {
+        //       console.log('Error connecting to MongoDB:');
+        //       return;
+        //     }
+        //     const db = client.db(dbName);
+        //     const collection = db.collection('koronadetails'); // Replace with your collection name
+        //   console.log("collection")
+        //   console.log(collection)
+        //const documents = [];
+            // KoronaDetailM.find({}).toArray(function(err, documents) {
+            //     if (err) {
+            //       console.log('Error retrieving documents:', err);
+            //       return;
+            //     }
+            //     // Process each document here
+            //     documents.forEach(function(document) {
+            //       // Perform your desired operations on each document
+            //       console.log(document);
+            //     });           
+            //     client.close();
+        //   });
+        

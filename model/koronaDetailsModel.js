@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 let koronaDetailSchema = new mongoose.Schema({
   patientId:{type: Number,required:true},
-  firstVaccindate: {
+  firstVaccin: {
     date: Date,
     manufacturer: String
   },

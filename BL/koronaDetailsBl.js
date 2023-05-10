@@ -2,6 +2,7 @@ const koronaDetailModel = require('../model/koronaDetailsModel')
 
 
 
+
 exports.getAllkoronaDetail = async function() {
   try {
   
@@ -13,8 +14,6 @@ exports.getAllkoronaDetail = async function() {
   throw err;
 }
 }
-
-
 
 exports.getkoronaDetail = function(id)
 {
